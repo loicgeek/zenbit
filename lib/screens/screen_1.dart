@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -10,8 +11,6 @@ class Screen1 extends StatelessWidget {
   const Screen1({Key? key}) : super(key: key);
 
   static const routeName = '/screen_1';
-
-  //final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +60,7 @@ class Screen1 extends StatelessWidget {
                                 ProjectPlaceholder.shortLoremIpsum,
                                 style: TextStyle(
                                   color: ProjectColor.black,
-                                  fontSize: 12,
+                                  fontSize: 15,
                                 ),
                               ),
                             ),
@@ -74,7 +73,7 @@ class Screen1 extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     color: ProjectColor.grey.withOpacity(.4),
                                   ),
-                                  child: Scrollbar(
+                                  child: CupertinoScrollbar(
                                     isAlwaysShown: true,
                                     child: SingleChildScrollView(
                                       child: Padding(
@@ -86,7 +85,7 @@ class Screen1 extends StatelessWidget {
                                           ProjectPlaceholder.longLoremIpsum,
                                           style: TextStyle(
                                             color: ProjectColor.black,
-                                            fontSize: 12,
+                                            fontSize: 15,
                                           ),
                                         ),
                                       ),
