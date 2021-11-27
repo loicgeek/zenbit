@@ -42,7 +42,7 @@ class Screen2 extends StatelessWidget {
                       style: TextStyle(
                         color: ProjectColor.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 19,
+                        fontSize: 22,
                       ),
                     ),
                     Container(
@@ -75,7 +75,7 @@ class Screen2 extends StatelessWidget {
                       style: TextStyle(
                         color: ProjectColor.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 19,
+                        fontSize: 22,
                       ),
                     ),
                     Container(
