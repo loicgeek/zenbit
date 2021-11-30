@@ -9,20 +9,25 @@ class AppCloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(
-          "assets/images/oblic_line.png",
-          color: ProjectColor.black,
-        ),
-        Transform.rotate(
-          angle: pi / 2,
-          child: Image.asset(
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pop();
+      },
+      child: Stack(
+        children: [
+          Image.asset(
             "assets/images/oblic_line.png",
             color: ProjectColor.black,
           ),
-        ),
-      ],
+          Transform.rotate(
+            angle: pi / 2,
+            child: Image.asset(
+              "assets/images/oblic_line.png",
+              color: ProjectColor.black,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
