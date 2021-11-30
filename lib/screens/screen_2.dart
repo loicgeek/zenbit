@@ -22,54 +22,59 @@ class Screen2 extends StatelessWidget {
         padding: EdgeInsets.all(ProjectSizes.contentPadding),
         color: Colors.white,
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(ProjectSizes.contentPadding),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      AppCloseButton(),
-                    ],
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Section 1 (2)",
-                      style: TextStyle(
-                        color: ProjectColor.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
+          child: CustomScrollView(
+            slivers: [
+              SliverList(
+                delegate: SliverChildListDelegate.fixed(
+                  [
+                    Padding(
+                      padding: EdgeInsets.all(ProjectSizes.contentPadding),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: const [
+                          AppCloseButton(),
+                        ],
                       ),
                     ),
-                    Container(
-                      height: ProjectSizes.cardHeight + 8 + 15,
-                      padding: const EdgeInsets.only(top: 8, left: 5),
-                      child: Consumer<HorizontalItemsProvider>(
-                          builder: (context, provider, child) {
-                        return ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: provider.itemsCount,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8.0, vertical: 15),
-                              child: AppCardWidget(
-                                text: provider.generateItemAt(index + 1),
-                              ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Section 1 (2)",
+                          style: TextStyle(
+                            color: ProjectColor.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                          ),
+                        ),
+                        Container(
+                          height: ProjectSizes.cardHeight + 8 + 15,
+                          padding: const EdgeInsets.only(top: 8, left: 5),
+                          child: Consumer<HorizontalItemsProvider>(
+                              builder: (context, provider, child) {
+                            return ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: provider.itemsCount,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0, vertical: 15),
+                                  child: AppCardWidget(
+                                    text: provider.generateItemAt(index + 1),
+                                  ),
+                                );
+                              },
                             );
-                          },
-                        );
-                      }),
+                          }),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+              ),
+              SliverList(
+                delegate: SliverChildListDelegate.fixed(
+                  [
                     const Text(
                       "Section 2 (4)",
                       style: TextStyle(
@@ -85,6 +90,7 @@ class Screen2 extends StatelessWidget {
                       child: Consumer<VerticalItemsProvider>(
                           builder: (context, provider, child) {
                         return ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: provider.itemsCount,
                           itemBuilder: (context, index) {
@@ -101,8 +107,8 @@ class Screen2 extends StatelessWidget {
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
